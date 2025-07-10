@@ -1,6 +1,6 @@
 # Ondemand XYZ Tile Map Service
 オンデマンド型のXYZタイル地図を提供するサービス  
-ブラウザからのリクエストに応じて、ダイナミックにタイル画像を生成し返却する
+ブラウザからのリクエストに応じて、ダイナミックにタイル画像を生成し返却する  
 作成したタイル画像は、一定期間キャッシュされる
 
 ## システム構成
@@ -43,8 +43,8 @@
 ### SSL証明書の設定
 SSL証明書を設定するために、以下のファイルを差し替える  
 ※ファイル名は変更しないこと
-- /odtiles-docker/base/httpd/tls/server.crt
-- /odtiles-docker/base/httpd/tls/server.key
+- /odtiles-docker/httpd/tls/server.crt
+- /odtiles-docker/httpd/tls/server.key
 
 ## ビルド＆起動
 ```bash
