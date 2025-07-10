@@ -52,4 +52,9 @@ SSL証明書を設定するために、以下のファイルを差し替える
 ```
 
 ## 使い方
+- タイルマップのURL
+    - `https://<SERVER_NAME>/xyz/<sub path>/<z>/<x>/<-y>.png`
+    - 例：`https://odtiles.example.com/xyz/sample/10/512/512.png`
+
+
 使い方の詳細は、[odtiles-base](https://github.com/take4iso/odtiles-base)のREADMEを参照のこと
