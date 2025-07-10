@@ -1,0 +1,8 @@
+/opt/odtiles/logs
+{
+    daily
+    rotate 60
+    compress
+    ifempty
+    missingok
+}

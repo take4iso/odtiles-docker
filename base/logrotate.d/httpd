@@ -1,0 +1,8 @@
+/usr/local/apache2/logs
+{
+    daily
+    rotate 60
+    compress
+    ifempty
+    missingok
+}
