@@ -13,6 +13,7 @@
 
 ## 初期化
 ### .env ファイルを編集する
+env_exampleをコピーして、.envファイルを作成する
 - SERVER_NAME
     - サーバーのホスト名
     - 例：`odtiles.example.com`
