@@ -50,7 +50,12 @@ SSL証明書を設定するために、以下のファイルを差し替える
 ```bash
 > docker compose up -d --build
 ```
-
+## トークンの確認
+UPLOAD_API_TOKENはコンテナの初回起動時に自動で設定される  
+以下のコマンドで確認できる
+```bash
+> docker logs odtiles-base-1
+```
 ## 使い方
 - タイルマップのURL
     - `https://<SERVER_NAME>/xyz/<sub path>/<z>/<x>/<-y>.png`
