@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 
 volumes:
   tilesrc:
@@ -23,6 +23,7 @@ services:
       - tilesrc:${TILE_SOURCE_FOLDER}
       - tileout:${TILE_OUTPUT_FOLDER}
       - odtileslog:/opt/odtiles/logs/
+      - apachelog:/usr/local/apache2/logs/
     restart: always
 
   httpd:
