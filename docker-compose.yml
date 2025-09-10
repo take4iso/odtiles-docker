@@ -1,8 +1,6 @@
 version: '3'
 
 volumes:
-  tilesrc:
-  tileout:
   odtileslog:
   apachelog:
 
@@ -15,13 +13,11 @@ services:
         - SERVER_NAME=${SERVER_NAME}
         - UWSGI_WORKERS=${UWSGI_WORKERS}
         - UWSGI_PORT=${UWSGI_PORT}
-        - TILE_SOURCE_FOLDER=${TILE_SOURCE_FOLDER}
-        - TILE_OUTPUT_FOLDER=${TILE_OUTPUT_FOLDER}
         - TILE_MAX_AGE=${TILE_MAX_AGE}
         - TILE_MAX_AGE_LIVE=${TILE_MAX_AGE_LIVE}
     volumes:
-      - tilesrc:${TILE_SOURCE_FOLDER}
-      - tileout:${TILE_OUTPUT_FOLDER}
+      - ${TILE_SOURCE_FOLDER}:/mnt/odtiles/tilesrc
+      - ${TILE_OUTPUT_FOLDER}:/mnt/odtiles/tileout
       - odtileslog:/opt/odtiles/logs/
       - apachelog:/usr/local/apache2/logs/
     restart: always

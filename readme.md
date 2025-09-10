@@ -29,11 +29,15 @@ env_exampleをコピーして、.envファイルを作成する
 - TILE_SOURCE_FOLDER
     - タイルソースのフォルダ
     - タイル画像を生成するためのソースデータを格納する
-    - デフォルトは `/mnt/odtiles/tilesrc`
+    - ホスト側のフォルダを指定すること
+    - デフォルトは `/mnt/host/tilesrc`
+    - baseコンテナの `/mnt/odtiles/tilesrc` にマウントされる
 - TILE_OUTPUT_FOLDER
     - タイル画像のキャッシュフォルダ
     - タイル画像を格納する
-    - デフォルトは `/mnt/odtiles/tileout`
+    - ホスト側のフォルダを指定すること
+    - デフォルトは `/mnt/host/tileout`
+    - baseコンテナの `/mnt/odtiles/tileout` にマウントされる
 - TILE_MAX_AGE
     - タイル画像の最大キャッシュ期間
     - デフォルトは `86400`（1日）
