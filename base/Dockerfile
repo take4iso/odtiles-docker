@@ -26,19 +26,18 @@ RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 
 # cronをインストールして，タイルキャッシュのローテートを設定する場合は以下を全部有効にする
-# cronを入れる
-# RUN dnf update && dnf install -y cronie
+RUN dnf update && dnf install -y cronie
 
 # PAMの設定
-# RUN sed -i -e '/pam_loginuid.so/s/^/#/' /etc/pam.d/crond
+RUN sed -i -e '/pam_loginuid.so/s/^/#/' /etc/pam.d/crond
 
 # rogrotateとcronの設定ファイルを追加
-# ADD logrotate.d /etc/logrotate.d/
-# ADD cron.d /etc/cron.d/
-# RUN chmod 0644 /etc/cron.d/*
+ADD logrotate.d /etc/logrotate.d/
+ADD cron.d /etc/cron.d/
+RUN chmod 0644 /etc/cron.d/*
 
 # start.sh にcronの起動を追加
-# RUN sed -i '4i crond' /opt/odtiles/start.sh
+RUN sed -i '4i crond' /opt/odtiles/start.sh
 
 
 

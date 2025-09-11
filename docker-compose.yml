@@ -33,5 +33,4 @@ services:
       - apachelog:/usr/local/apache2/logs/
     ports:
       - "80:80"
-      - "443:443"
     restart: always
