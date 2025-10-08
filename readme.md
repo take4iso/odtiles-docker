@@ -20,6 +20,10 @@ env_exampleをコピーして、.envファイルを作成する
 - SERVER_ADMIN
     - サーバー管理者のメールアドレス
     - 例：`admin@odtiles.example.com`
+- ALLOWED_HOSTS
+    - 許可するホスト名
+    - 複数指定する場合は、カンマ区切りで指定する
+    - 例：`odtiles.example.com,localhost`
 - UWSGI_WORKERS
     - uwsgiのワーカープロセス数
     - デフォルトは `8`

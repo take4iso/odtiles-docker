@@ -10,7 +10,7 @@ services:
       context: base/
       dockerfile: Dockerfile
       args:
-        - SERVER_NAME=${SERVER_NAME}
+        - ALLOWED_HOSTS=${ALLOWED_HOSTS}
         - UWSGI_WORKERS=${UWSGI_WORKERS}
         - UWSGI_PORT=${UWSGI_PORT}
         - TILE_MAX_AGE=${TILE_MAX_AGE}
@@ -33,4 +33,5 @@ services:
       - apachelog:/usr/local/apache2/logs/
     ports:
       - "80:80"
+      - "443:443"
     restart: always

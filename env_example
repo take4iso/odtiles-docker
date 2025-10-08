@@ -2,6 +2,7 @@ COMPOSE_PROJECT_NAME=odtiles
 
 SERVER_NAME=localhost
 SERVER_ADMIN=admin@localhost
+ALLOWED_HOSTS=localhost,host1.example.jp,host2.example.jp
 UWSGI_WORKERS=8
 UWSGI_PORT=0.0.0.0:8080
 TILE_SOURCE_FOLDER=/mnt/host/tilesrc
