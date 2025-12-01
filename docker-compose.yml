@@ -4,6 +4,7 @@ volumes:
   odtileslog:
   apachelog:
 
+
 services:
   base:
     build:
@@ -29,6 +30,7 @@ services:
       args:
         - SERVER_NAME=${SERVER_NAME}
         - SERVER_ADMIN=${SERVER_ADMIN}
+        - UWSGI_PORT=${UWSGI_PORT}
     volumes:
       - apachelog:/usr/local/apache2/logs/
     ports:

@@ -16,7 +16,7 @@ RUN  result="" && \
     result="[${result%,}]" && \
     sed -i "s!ALLOWED_HOSTS=\['localhost'\]!ALLOWED_HOSTS=${result}!" /opt/odtiles/odtiles/settings.py
 RUN sed -i "s!workers = 8!workers = ${UWSGI_WORKERS}!" /opt/odtiles/odtiles/uwsgi.ini
-RUN sed -i "s!socket = 0.0.0.0:8080!socket = ${UWSGI_PORT}!" /opt/odtiles/odtiles/uwsgi.ini
+RUN sed -i "s!socket = 0.0.0.0:8080!socket = 0.0.0.0:${UWSGI_PORT}!" /opt/odtiles/odtiles/uwsgi.ini
 # ホストのフォルダをバインドドマウントするので、ここでは変更しない
 #RUN sed -i "s!TILE_SOURCE_FOLDER = '/mnt/odtiles/tilesrc'!TILE_SOURCE_FOLDER = '${TILE_SOURCE_FOLDER}'!" /opt/odtiles/odtiles/settings.py
 #RUN sed -i "s!TILE_OUTPUT_FOLDER = '/mnt/odtiles/tileout'!TILE_OUTPUT_FOLDER = '${TILE_OUTPUT_FOLDER}'!" /opt/odtiles/odtiles/settings.py
