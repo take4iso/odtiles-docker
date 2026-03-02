@@ -1,5 +1,5 @@
 # Ondemand XYZ Tile Map Service
-オンデマンド型のXYZタイル地図を提供するサービス  
+オンデマンド型のXYZタイル地図およびＷＭＳを提供するサービス  
 ブラウザからのリクエストに応じて、ダイナミックにタイル画像を生成し返却する  
 作成したタイル画像は、一定期間キャッシュされる
 
@@ -20,6 +20,10 @@ env_exampleをコピーして、.envファイルを作成する
 - SERVER_ADMIN
     - サーバー管理者のメールアドレス
     - 例：`admin@odtiles.example.com`
+- URL
+    - サーバーのURL
+    - 例：`https://odtiles.example.com`
+    - WMSのGetCapabilitiesで参照する
 - ALLOWED_HOSTS
     - 許可するホスト名
     - 複数指定する場合は、カンマ区切りで指定する
@@ -42,10 +46,16 @@ env_exampleをコピーして、.envファイルを作成する
     - ホスト側のフォルダを指定すること
     - デフォルトは `/mnt/host/tileout`
     - baseコンテナの `/mnt/odtiles/tileout` にマウントされる
-- TILE_MAX_AGE
+- WMS_OUTPUT_FOLDER
+    - WMS画像のキャッシュフォルダ
+    - WMSの出力画像を格納する
+    - ホスト側のフォルダを指定すること
+    - デフォルトは `/mnt/host/wmsout`
+    - baseコンテナの `/mnt/odtiles/wmsout` にマウントされる 
+- MAX_AGE
     - タイル画像の最大キャッシュ期間
     - デフォルトは `3600`（1時間）
-- TILE_MAX_AGE_LIVE
+- MAX_AGE_LIVE
     - タイル画像のライブキャッシュ期間
     - デフォルトは `60`（1分）
 
@@ -67,8 +77,12 @@ UPLOAD_API_TOKENはコンテナの初回起動時に自動で設定される
 ```
 ## 使い方
 - タイルマップのURL
-    - `https://<SERVER_NAME>/xyz/<sub path>/<z>/<x>/<-y>.png`
-    - 例：`https://odtiles.example.com/xyz/sample/10/512/512.png`
-
+    - `https://<DOMAIN_NAME>/xyz/<sub path>/{z}/{x}/{y}.png`
+- WMSのURL
+    - `https://<DOMAIN_NAME>/wms/<sub path>?SERVICE=wms&REQUEST=GetCapabilities&VERSION=1.1.1`
+- GeoTIFFのアップロードAPIのURL
+    - `https://<DOMAIN_NAME>/upload/<sub path>`
+- WMS有効化APIのURL
+  -  `https://<DOMAIN_NAME>/setCapabilities/<sub path>`
 
 使い方の詳細は、[odtiles-base](https://github.com/take4iso/odtiles-base)のREADMEを参照のこと
