@@ -15,14 +15,27 @@ services:
         - ALLOWED_HOSTS=${ALLOWED_HOSTS}
         - UWSGI_WORKERS=${UWSGI_WORKERS}
         - UWSGI_PORT=${UWSGI_PORT}
+        - TILE_SOURCE_FOLDER=${TILE_SOURCE_FOLDER}
+        - TILE_OUTPUT_FOLDER=${TILE_OUTPUT_FOLDER}
+        - WMS_OUTPUT_FOLDER=${WMS_OUTPUT_FOLDER}
         - MAX_AGE=${MAX_AGE}
         - MAX_AGE_LIVE=${MAX_AGE_LIVE}
     volumes:
-      - ${TILE_SOURCE_FOLDER}:/mnt/odtiles/tilesrc
-      - ${TILE_OUTPUT_FOLDER}:/mnt/odtiles/tileout
-      - ${WMS_OUTPUT_FOLDER}:/mnt/odtiles/wmsout
-      - odtileslog:/opt/odtiles/logs/
-      - apachelog:/usr/local/apache2/logs/
+      - type: bind
+        source: ${TILE_SOURCE_FOLDER}
+        target: /mnt/odtiles/tilesrc
+      - type: bind
+        source: ${TILE_OUTPUT_FOLDER}
+        target: /mnt/odtiles/tileout
+      - type: bind
+        source: ${WMS_OUTPUT_FOLDER}
+        target: /mnt/odtiles/wmsout
+      - type: volume
+        source: odtileslog
+        target: /opt/odtiles/logs/
+      - type: volume
+        source: apachelog
+        target: /usr/local/apache2/logs/
     restart: always
 
   httpd:
@@ -34,7 +47,9 @@ services:
         - SERVER_ADMIN=${SERVER_ADMIN}
         - UWSGI_PORT=${UWSGI_PORT}
     volumes:
-      - apachelog:/usr/local/apache2/logs/
+      - type: volume
+        source: apachelog
+        target: /usr/local/apache2/logs/
     ports:
       - "80:80"
       - "443:443"
