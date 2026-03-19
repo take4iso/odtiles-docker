@@ -19,7 +19,7 @@
 env_exampleをコピーして、.envファイルを作成する
 - SERVER_NAME
     - サーバーのホスト名
-    - 例：`odtiles.example.com`
+    - 例：`odtiles`
 - SERVER_ADMIN
     - サーバー管理者のメールアドレス
     - 例：`admin@odtiles.example.com`
